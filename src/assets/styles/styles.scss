@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    font-size: 10px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #F8F7EF;
+}
+nav {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    .nav-container {
+        margin: 30px 0 0 0;
+        width: 750px;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            padding-bottom: 1px;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #8F8F8F;
+            cursor: pointer;
+            &:hover {
+                padding-bottom: 0;
+                border-bottom: 1px solid black;
+                border-width: 1px;
+                color: black;
+                transition: color 1s;
+            }
+            &.active {
+            color: black;
+            border-bottom: 1px solid black;
+            padding-bottom: 0;
+            }
+        }
+    }
+}
+.content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 215px;
+        width: 215px;
+        border: 2px solid black;
+        border-radius: 110px;
+    }
+    .text {
+        text-align: center;
+        margin-top: 50px;
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+    }
+    .logo{
+        margin: 30px 0 0 0;
+        a>svg {
+            height: 50px;
+            width: 50px;
+            color: black;
+            cursor: pointer;
+            &:active {
+                color: #8F8F8F;
+            }
+        }
+    }
+}
