@@ -20,41 +20,56 @@
     background-color: #F8F7EF;
 }
 nav {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
     .nav-container {
-        margin: 30px 0 0 0;
-        width: 750px;
-        height: auto;
+        margin: 20px 20px 0px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         @include sm {
-                flex-direction: column;
-                gap: 10px;
-            }
-        
-            li {
-            padding-bottom: 1px;
-            font-weight: 700;
+            justify-content: start;
+            align-items: flex-start;
+        }
+        span {
+            position: relative;
+            display: block;
             font-size: 2.5rem;
-            color: #8F8F8F;
-            cursor: pointer;
-            &:hover {
-                padding-bottom: 0;
-                border-bottom: 1px solid black;
-                border-width: 1px;
-                color: black;
-                transition: color 1s;
-            }
-            &.active {
-            color: black;
-            border-bottom: 1px solid black;
-            padding-bottom: 0;
+            font-weight: 700;
+            @include sm {
+                position: absolute;
+                top: 20px;
+                left: 20px;
             }
         }
+        ul {
+            display: flex;
+            gap: 40px;
+            @include sm{
+                flex-direction: column;
+                flex-grow: 1;
+                align-items: center;
+                gap: 20px;
+            }
+
+            li {
+                padding-bottom: 1px;
+                font-weight: 700;
+                font-size: 2.5rem;
+                color: #8F8F8F;
+                cursor: pointer;
+                &:hover {
+                    padding-bottom: 0;
+                    border-bottom: 1px solid black;
+                    color: black;
+                    transition: color 1s;
+                }
+                &.active {
+                color: black;
+                border-bottom: 1px solid black;
+                padding-bottom: 0;
+                }
+            }
+        }
+        
     }
 }
 .content {
