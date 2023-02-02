@@ -12,9 +12,12 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
-  entry: "./src/index.ts",
+  entry: {
+      main: path.join(__dirname, "./src/index.ts"),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "[name].bundle.js"
   },
   devServer: {
     open: true,
@@ -38,14 +41,20 @@ const config = {
       {
         test: /\.css$/i,
         use: [stylesHandler, "css-loader"],
+        exclude: ["/node_modules"],
+
       },
       {
         test: /\.s[ac]ss$/i,
         use: [stylesHandler, "css-loader", "sass-loader"],
+        exclude: ["/node_modules"],
+
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
+        use: ["file-loader"],
+        exclude: ["/node_modules"],
       },
 
       // Add your rules for custom modules here
