@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 @import "./media-queries";
+
 * {
     margin: 0;
     padding: 0;
@@ -100,8 +101,7 @@ nav {
     .logo{
         margin: 30px 0 0 0;
         a>i {
-            height: 50px;
-            width: 50px;
+            font-size: 5rem;
             color: black;
             cursor: pointer;
             &:active {
