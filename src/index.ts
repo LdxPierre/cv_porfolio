@@ -14,6 +14,7 @@ const nav = {
 
 //Affiche un contenu (import) différent en fonction du param
 const showContent = (target:string):void=>{
+    target === '' ? target = '#home' : undefined;
     switch (target) {
     case '#home' : 
         contentElement.innerHTML = home.content;
