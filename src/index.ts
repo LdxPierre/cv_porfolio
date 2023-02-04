@@ -11,6 +11,7 @@ const nav = {
     porfolio: <HTMLElement>document.querySelector('.porfolio'),
     contact: <HTMLElement>document.querySelector('.contact'),
 }
+const navTogglerElement: HTMLElement = document.querySelector('.navToggler');
 
 //Affiche un contenu (import) différent en fonction du param
 const showContent = (target:string):void=>{
@@ -46,6 +47,16 @@ const showContent = (target:string):void=>{
         break;
     }
 }
+
+//Change ajoute la class 'show' au menu pour afficher la liste en responsive
+navTogglerElement.addEventListener('click', ()=>{
+    const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
+    if (UlElement.classList.contains('show')) {
+        UlElement.classList.remove('show')
+    } else {
+        UlElement.classList.add('show');
+    }
+})
 
 //Créer un tableau itérable à partir de nav
 //Ajoute un eventlisener à chaque element (e) pour actualiser le contenu (content)
