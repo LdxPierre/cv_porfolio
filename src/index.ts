@@ -15,22 +15,34 @@ const nav = {
 //Affiche un contenu (import) différent en fonction du param
 const showContent = (target:string):void=>{
     target === '' ? target = '#home' : undefined;
+    
     switch (target) {
     case '#home' : 
         contentElement.innerHTML = home.content;
         contentElement.setAttribute('class', 'content home');
+        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        nav.home.classList.add('active');
         break;
+
     case '#cv': 
         contentElement.innerHTML = cv.content;
         contentElement.setAttribute('class', 'content cv');
+        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        nav.cv.classList.add('active');
         break;
+
     case '#porfolio':
         contentElement.innerHTML = porfolio.content;
         contentElement.setAttribute('class', 'content porfolio');
+        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        nav.porfolio.classList.add('active');
         break;
+        
     case '#contact': 
         contentElement.innerHTML = contact.content;
         contentElement.setAttribute('class', 'content contact');
+        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        nav.contact.classList.add('active');
         break;
     }
 }
