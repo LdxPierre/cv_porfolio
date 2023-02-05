@@ -22,18 +22,35 @@ nav {
             @include sm {
                 display: inline;
                 padding: 5px 25px;
-                border: 1px solid black;
+                background-color: black;
+                color: #F8F7EF;
                 border-radius: 25px;
-                font-size: 2.5rem;
-                font-weight: 700;
-                i {
-                    margin-left: 10px;
-                    font-size: 2.5rem;
-                }
+                transform: rotate(0deg);
+                transition: transform 0.2s;
                 &:hover {
                     border-color: #8F8F8F;
                     color: #8F8F8F;
                     cursor: pointer;
+                }
+                span {
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                }
+                i {
+                    margin-left: 10px;
+                    font-size: 2.5rem;
+                }
+                &.down {
+                    i {
+                        transform: rotate(180deg);
+                        transition: transform 0.3s;
+                    }
+                }
+                &.up {
+                    i {
+                        transform: rotate(0deg);
+                        transition: transform 0.1s;
+                    }
                 }
             }
         }

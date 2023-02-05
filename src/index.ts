@@ -21,8 +21,10 @@ const showContent = (target:string):void=>{
     case '#home' : 
         contentElement.innerHTML = home.content;
         contentElement.setAttribute('class', 'content home');
-        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
         nav.home.classList.add('active');
+        document.querySelector('.nav-container>ul').classList.remove('show')
+        document.querySelector('.navToggler>span').innerHTML = `Home`;
         break;
 
     case '#cv': 
@@ -30,6 +32,8 @@ const showContent = (target:string):void=>{
         contentElement.setAttribute('class', 'content cv');
         document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
         nav.cv.classList.add('active');
+        document.querySelector('.nav-container>ul').classList.remove('show')
+        document.querySelector('.navToggler>span').innerHTML = `Curriculum Vitae`;
         break;
 
     case '#porfolio':
@@ -37,6 +41,8 @@ const showContent = (target:string):void=>{
         contentElement.setAttribute('class', 'content porfolio');
         document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
         nav.porfolio.classList.add('active');
+        document.querySelector('.nav-container>ul').classList.remove('show')
+        document.querySelector('.navToggler>span').innerHTML = `Porfolio`;
         break;
         
     case '#contact': 
@@ -44,17 +50,26 @@ const showContent = (target:string):void=>{
         contentElement.setAttribute('class', 'content contact');
         document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
         nav.contact.classList.add('active');
+        document.querySelector('.nav-container>ul').classList.remove('show')
+        document.querySelector('.navToggler>span').innerHTML = `Contact`;
         break;
     }
 }
 
+//NavToggler Event
 //Change ajoute la class 'show' au menu pour afficher la liste en responsive
-navTogglerElement.addEventListener('click', ()=>{
+navTogglerElement.addEventListener('click', function(){
     const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
     if (UlElement.classList.contains('show')) {
-        UlElement.classList.remove('show')
+        UlElement.classList.remove('show');
+        this.classList.contains('down') 
+            ? this.classList.replace('down', 'up')
+            : this.classList.add('up');
     } else {
         UlElement.classList.add('show');
+        this.classList.contains('up') 
+            ? this.classList.replace('up', 'down')
+            : this.classList.add('down');
     }
 })
 
@@ -63,8 +78,20 @@ navTogglerElement.addEventListener('click', ()=>{
 Object.entries(nav).forEach((e)=>{
     e[1].addEventListener('click', ()=> {
         showContent('#'+e[0]);
+        navTogglerElement.classList.contains('down') 
+            ? navTogglerElement.classList.replace('down', 'up')
+            : navTogglerElement.classList.add('up');
     })
 });
+
+//window event
+//re cache la navbar quand on est plus en responsive
+window.addEventListener('resize', () => {
+    if(window.innerWidth >= 768) {
+        navTogglerElement.classList.remove('down');
+        document.querySelector('.nav-container>ul').classList.remove('show');
+    }
+})
 
 //Affiche le contenu en fonction du hash présent dans l'url
 showContent(document.location.hash);
