@@ -69,13 +69,13 @@ nav {
 
             li {
                 a {
-                    padding-bottom: 1px;
+                    padding-bottom: 2;
                     font-weight: 700;
                     font-size: 2.5rem;
                     color: #8F8F8F;
                     &:hover {
                         padding-bottom: 0;
-                        border-bottom: 1px solid black;
+                        border-bottom: 2px solid black;
                         color: black;
                         transition: color 1s;
                     }
@@ -83,7 +83,7 @@ nav {
                 &.active {
                     a {
                         color: black;
-                        border-bottom: 1px solid black;
+                        border-bottom: 2px solid black;
                         padding-bottom: 0;
                     }
                 }
