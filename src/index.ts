@@ -2,14 +2,12 @@ import "./assets/styles/styles.scss";
 import {home} from './assets/javascript/home';
 import {cv} from "./assets/javascript/cv";
 import {porfolio} from "./assets/javascript/porfolio";
-import {contact} from './assets/javascript/contact';
 
 const navTogglerElement: HTMLElement = document.querySelector('.navToggler');
 const nav = {
     home: <HTMLElement>document.querySelector('.home'),
     cv: <HTMLElement>document.querySelector('.cv'),
     porfolio: <HTMLElement>document.querySelector('.porfolio'),
-    contact: <HTMLElement>document.querySelector('.contact'),
 }
 const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
 const contentElement: HTMLElement = document.querySelector(".content");
@@ -44,15 +42,6 @@ const showContent = (target:string):void=>{
         nav.porfolio.classList.add('active');
         UlElement.classList.remove('show')
         document.querySelector('.navToggler>span').innerHTML = `Porfolio`;
-        break;
-        
-    case '#contact': 
-        contentElement.innerHTML = contact.content;
-        contentElement.setAttribute('class', 'content contact');
-        document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
-        nav.contact.classList.add('active');
-        UlElement.classList.remove('show')
-        document.querySelector('.navToggler>span').innerHTML = `Contact`;
         break;
     }
 }
