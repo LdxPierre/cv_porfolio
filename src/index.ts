@@ -4,14 +4,15 @@ import {cv} from "./assets/javascript/cv";
 import {porfolio} from "./assets/javascript/porfolio";
 import {contact} from './assets/javascript/contact';
 
-const contentElement: HTMLElement = document.querySelector(".content");
+const navTogglerElement: HTMLElement = document.querySelector('.navToggler');
 const nav = {
     home: <HTMLElement>document.querySelector('.home'),
     cv: <HTMLElement>document.querySelector('.cv'),
     porfolio: <HTMLElement>document.querySelector('.porfolio'),
     contact: <HTMLElement>document.querySelector('.contact'),
 }
-const navTogglerElement: HTMLElement = document.querySelector('.navToggler');
+const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
+const contentElement: HTMLElement = document.querySelector(".content");
 
 //Affiche un contenu (import) différent en fonction du param
 const showContent = (target:string):void=>{
@@ -23,34 +24,34 @@ const showContent = (target:string):void=>{
         contentElement.setAttribute('class', 'content home');
         document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
         nav.home.classList.add('active');
-        document.querySelector('.nav-container>ul').classList.remove('show')
+        UlElement.classList.remove('show')
         document.querySelector('.navToggler>span').innerHTML = `Home`;
         break;
 
     case '#cv': 
         contentElement.innerHTML = cv.content;
         contentElement.setAttribute('class', 'content cv');
-        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
         nav.cv.classList.add('active');
-        document.querySelector('.nav-container>ul').classList.remove('show')
+        UlElement.classList.remove('show')
         document.querySelector('.navToggler>span').innerHTML = `Curriculum Vitae`;
         break;
 
     case '#porfolio':
         contentElement.innerHTML = porfolio.content;
         contentElement.setAttribute('class', 'content porfolio');
-        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
         nav.porfolio.classList.add('active');
-        document.querySelector('.nav-container>ul').classList.remove('show')
+        UlElement.classList.remove('show')
         document.querySelector('.navToggler>span').innerHTML = `Porfolio`;
         break;
         
     case '#contact': 
         contentElement.innerHTML = contact.content;
         contentElement.setAttribute('class', 'content contact');
-        document.querySelectorAll('.active').forEach((e)=> e.classList.remove('active'));
+        document.querySelectorAll('.nav-container>ul>.active').forEach((e)=> e.classList.remove('active'));
         nav.contact.classList.add('active');
-        document.querySelector('.nav-container>ul').classList.remove('show')
+        UlElement.classList.remove('show')
         document.querySelector('.navToggler>span').innerHTML = `Contact`;
         break;
     }
@@ -59,7 +60,6 @@ const showContent = (target:string):void=>{
 //NavToggler Event
 //Change ajoute la class 'show' au menu pour afficher la liste en responsive
 navTogglerElement.addEventListener('click', function(){
-    const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
     if (UlElement.classList.contains('show')) {
         UlElement.classList.remove('show');
         this.classList.contains('down') 
@@ -89,7 +89,7 @@ Object.entries(nav).forEach((e)=>{
 window.addEventListener('resize', () => {
     if(window.innerWidth >= 768) {
         navTogglerElement.classList.remove('down');
-        document.querySelector('.nav-container>ul').classList.remove('show');
+        UlElement.classList.remove('show');
     }
 })
 
