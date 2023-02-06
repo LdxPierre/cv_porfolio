@@ -3,6 +3,7 @@ import {home} from './assets/javascript/home';
 import {cv} from "./assets/javascript/cv";
 import {porfolio} from "./assets/javascript/porfolio";
 
+const containerElement:HTMLDivElement = document.querySelector('.container');
 const navTogglerElement: HTMLElement = document.querySelector('.navToggler');
 const nav = {
     home: <HTMLElement>document.querySelector('.home'),
@@ -11,6 +12,7 @@ const nav = {
 }
 const UlElement: HTMLDListElement = document.querySelector('.nav-container>ul');
 const contentElement: HTMLElement = document.querySelector(".content");
+const themeElement: HTMLSpanElement = document.querySelector('.theme');
 
 //Affiche un contenu (import) différent en fonction du param
 const showContent = (target:string):void=>{
@@ -81,6 +83,31 @@ window.addEventListener('resize', () => {
         UlElement.classList.remove('show');
     }
 })
+
+//darkMode
+//switch theme
+themeElement.addEventListener('click', ()=> {
+    if(containerElement.classList.contains('dark')) {
+        containerElement.classList.remove('dark');
+        document.cookie = 'theme=light'
+    } else {
+        containerElement.classList.add('dark');
+        document.cookie = 'theme=dark';
+    }
+})
+//applique theme
+switch (document.cookie) {
+    case 'theme=light': {
+        containerElement.setAttribute('class', 'container')
+        break
+    };
+    case 'theme=dark': {
+        containerElement.setAttribute('class', 'container dark')
+        break
+    }
+}
+
+
 
 //Affiche le contenu en fonction du hash présent dans l'url
 showContent(document.location.hash);

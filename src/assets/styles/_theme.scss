@@ -1,0 +1,10 @@
+.container {
+    --bg-primary: #f7f7f7;
+    --text-color: black ;
+    --accent: rgb(24, 74, 126);
+    --accent-2: rgb(54, 99, 147);
+    &.dark {
+        --bg-primary:rgb(21,33,46);
+        --text-color: white;
+    }
+}
